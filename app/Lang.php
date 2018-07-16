@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Model
 {
-    protected $table = ['administrators'];
+    protected $table = 'language';
     protected $fillable = [
-        'mail_address', 'name', 'type','created_date',
+        'id', 'lang', 'name','avail_flg',
     ];
 }
