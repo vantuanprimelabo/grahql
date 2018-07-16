@@ -22,21 +22,15 @@ class UserQuery extends Query
     public function args()
     {
         return [
-           'id' =>  [
-               'type' => Type::nonNull(Type::int())
-           ]
+//           'id' =>  [
+//               'type' => Type::nonNull(Type::int())
+//           ]
         ];
     }
 
-    public function resolve($root, $args, SelectFields $fields)
+    public function resolve()
     {
-        if (isset($args['id'])) {
-            return User::where('id' , $args['id'])->get();
-        } else if(isset($args['email'])) {
-            return User::where('email', $args['email'])->get();
-        } else {
-            return User::all();
-        }
+        return User::all();
     }
 
 }
