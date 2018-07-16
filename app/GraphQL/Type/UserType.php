@@ -10,7 +10,7 @@ class UserType extends BaseType
 {
     protected $attributes = [
         'name' => 'User',
-        'description' => 'A type'
+        'description' => 'A type',
     ];
 
     public function fields()

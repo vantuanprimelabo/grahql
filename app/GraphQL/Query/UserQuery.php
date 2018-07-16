@@ -11,12 +11,12 @@ use App\User;
 class UserQuery extends Query
 {
     protected $attributes = [
-        'name'  => 'User',
+        'name'  => 'users',
     ];
 
     public function type()
     {
-        return GraphQL::type('UserType');
+        return Type::listOf(GraphQL::type('User'));
     }
 
     public function args()
@@ -30,7 +30,13 @@ class UserQuery extends Query
 
     public function resolve($root, $args, SelectFields $fields)
     {
-        return User::all();
+        if (isset($args['id'])) {
+            return User::where('id' , $args['id'])->get();
+        } else if(isset($args['email'])) {
+            return User::where('email', $args['email'])->get();
+        } else {
+            return User::all();
+        }
     }
 
 }
